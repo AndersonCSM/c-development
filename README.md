@@ -4,10 +4,6 @@ Repository for projects in the C/C++ programming languages. It contains course e
 ## Technologies  
 - C/C++ and associated libraries.  
 
-## Contact  
-- Social networks: [https://github.com/AndersonCSM](https://github.com/AndersonCSM)  
-- Contact email: andersoncarlos799@gmail.com  
-
 ---
 
 ## Sobre  
@@ -15,9 +11,5 @@ Repositório para projetos nas linguagens de programação C/C++. Contém exerc�
 
 ## Tecnologias  
 - C/C++ e bibliotecas associadas.  
-
-## Contato  
-- Redes sociais: [https://github.com/AndersonCSM](https://github.com/AndersonCSM)  
-- Email de contato: andersoncarlos799@gmail.com  
 
 ---

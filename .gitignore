@@ -1,0 +1,16 @@
+# Arquivos objeto compilados
+*.o
+*.obj
+
+# Executáveis
+*.exe
+*.out
+*.app
+
+
+
+# Arquivos temporários
+*.tmp
+*.bak
+*.swp
+*~
