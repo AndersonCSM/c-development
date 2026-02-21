@@ -1,5 +1,6 @@
 # Arquivos objeto compilados
 *.o
+*.a
 *.obj
 
 # Executáveis
@@ -15,3 +16,5 @@
 
 # Configs de IDE
 .vscode/
+output/
+bin/

@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "binary_tree/binary_search_tree.h"
+#include "../../data_structures/include/binary_search_tree.h"
 
 int main()
 {
@@ -22,4 +22,3 @@ int main()
 
     return 0;
 }
-

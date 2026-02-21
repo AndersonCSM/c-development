@@ -1,11 +1,12 @@
-#include "generic_list.h"
+#include "../include/generic_list.h"
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <assert.h>
 
-// criar lista
+// Cria uma lista generica
+// Parametros: tamanho dos dados, callback para liberar, callback para comparar
 List *list_create(size_t data_size, cb_free free_data, cb_compare compare_data)
 {
     assert(data_size > 0); // testa rapidamente se a sentença é válida sem uso de if
@@ -16,29 +17,32 @@ List *list_create(size_t data_size, cb_free free_data, cb_compare compare_data)
     list->head = NULL;                 // criando a head é null
     list->free_data = free_data;       // ponteiro para função de liberar
     list->compare_data = compare_data; // ponteiro para função de comparar
+
     return list;
 }
 
-// adicionar elementos
+// Adiciona um elemento no inicio da lista
+// Copia os dados para novo no alocado
 void list_add(List *list, void *data)
 {
     assert(list != NULL); // verifica rapidamente a sentença sem if
     assert(data != NULL); // verifica rapidamente a sentença sem if
 
     // aloca espaço para nmemb elementos de size bytes e INICIALIZA todos os bytes com zero.
-    Node *newNode = calloc(1, sizeof(Node));
+    Node *new_node = calloc(1, sizeof(Node));
 
     // cria um bloco de memória para armazenar dados novos
-    newNode->data = malloc(list->data_size);
+    new_node->data = malloc(list->data_size);
 
     // copia byte a byte (destino, origem, tamanho)
-    memcpy(newNode->data, data, list->data_size);
+    memcpy(new_node->data, data, list->data_size);
 
-    newNode->next = list->head; // faz o novo nó apontar para a head antiga, garante o encadeamento
+    new_node->next = list->head; // faz o novo nó apontar para a head antiga, garante o encadeamento
     // HEAD_ANT -> NODE_ANT ===> HEAD_NEW -> HEAD_ANT -> NODE_ANT
-    list->head = newNode; // a head da lista será o novo node criado
+    list->head = new_node; // a head da lista sera o novo node criado
 }
 
+// Libera a memoria alocada para um no e seus dados
 static void free_node_data(cb_free free_data, void *data)
 {
     /*
@@ -104,21 +108,21 @@ void list_iterate(List *list, cb_iterate iterate_callback)
     assert(list != NULL);
     assert(iterate_callback != NULL);
 
-    Node *current = list->head;
-    int index = 0;
+    Node *current_node = list->head;
+    int index_node = 0;
 
     // Enquanto ainda houver nós para visitar
-    while (current != NULL)
+    while (current_node != NULL)
     {
         // Chamamos a função de callback para o nó atual.
-        bool continuar = iterate_callback(index, current->data);
+        bool continuar = iterate_callback(index_node, current_node->data);
 
         // Se a função de callback retornar 'false', paramos a iteração
         if (!continuar)
             break;
 
         // Avançamos para o próximo nó
-        current = current->next;
-        index++;
+        current_node = current_node->next;
+        index_node++;
     }
 }

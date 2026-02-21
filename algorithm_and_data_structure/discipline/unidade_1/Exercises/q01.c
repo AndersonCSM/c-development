@@ -1,20 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "binary_tree/binary_search_tree.h"
+#include "../../data_structures/include/binary_search_tree.h"
 
 int main()
 {
     int list1[] = {10, 5, 3, 7, 15, 12, 18};
-    //int list2[] = {2, 5, 8, 12, 15, 20};
-    //int list3[] = {25, 20, 15, 10, 5};
-    //int list4[] = {20, 10, 30, 5, 15, 25, 35, 12};
-    //int list5[] = {10, 5, 20, 3, 7, 15, 30, 18, 25, 35};
+    // int list2[] = {2, 5, 8, 12, 15, 20};
+    // int list3[] = {25, 20, 15, 10, 5};
+    // int list4[] = {20, 10, 30, 5, 15, 25, 35, 12};
+    // int list5[] = {10, 5, 20, 3, 7, 15, 30, 18, 25, 35};
 
-    //int *lists[] = {list1, list2, list3, list4, list5};
-    //int sizes[] = {7, 6, 5, 8, 10};
+    // int *lists[] = {list1, list2, list3, list4, list5};
+    // int sizes[] = {7, 6, 5, 8, 10};
 
-    //Node *treeList[5];
+    // Node *treeList[5];
 
     Node *tree = createTree(list1, 7, NULL);
 

@@ -1,8 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "binary_search_tree.h"
+#include "../include/tree/binary_search_tree.h"
 
+// Cria um novo no para arvore binaria
+// Aloca memoria e inicializa os apontadores left e right
 Node *createNode(int data)
 {
     Node *newNode = (Node *)malloc(sizeof(Node));
@@ -12,11 +14,14 @@ Node *createNode(int data)
     return newNode;
 }
 
+// Funcao auxiliar para processar um no
+// Exibe o valor do no
 void process(Node *node)
 {
     printf("%d ", node->data);
 }
 
+// Percorre a arvore em pre-ordem (raiz, esquerda, direita)
 void preorder(Node *root)
 {
     if (root != NULL)
@@ -27,6 +32,8 @@ void preorder(Node *root)
     }
 }
 
+// Percorre a arvore em ordem (esquerda, raiz, direita)
+// Resulta em ordem crescente para ABP
 void order(Node *root)
 {
     if (root != NULL)
@@ -37,6 +44,7 @@ void order(Node *root)
     }
 }
 
+// Percorre a arvore em pos-ordem (esquerda, direita, raiz)
 void posorder(Node *root)
 {
     if (root != NULL)
@@ -47,9 +55,11 @@ void posorder(Node *root)
     }
 }
 
-Node *insertNode(Node *node, int key) // tudo que é passado para uma função é uma cópia, nesse caso cópia de um endereço
-{                                     // inserção recursiva
-    if (!node)                        // onde ocorre a insercao se o nó estiver NULL/vazio
+// Insere um novo valor na arvore binaria de busca
+// Mantém a propriedade de ABP: esquerda < raiz < direita
+Node *insertNode(Node *node, int key)
+{              // inserção recursiva
+    if (!node) // onde ocorre a insercao se o nó estiver NULL/vazio
     {
         return createNode(key);
     }
@@ -68,10 +78,12 @@ Node *insertNode(Node *node, int key) // tudo que é passado para uma função �
         node->left = insertNode(node->left, key); // verifica na sub-esquerda com o novo nó sendo o da esquerda
     }
 
-    return node; // retornar a árvore com a inserção realizada
+    return node; // retornar a arvore com a insercao realizada
 }
 
-Node *searchNode(Node *root, int key)      // tudo que é passado para uma função é uma cópia, nesse caso cópia de um endereço
+// Procura um valor na arvore binaria de busca
+// Retorna o no encontrado ou NULL se nao existir
+Node *searchNode(Node *root, int key)
 {                                          // busca recursiva
     if (root == NULL || root->data == key) // se não achar root == NULL ou se achar root->data == key retorna o nó
     {
@@ -88,6 +100,8 @@ Node *searchNode(Node *root, int key)      // tudo que é passado para uma funç
     }
 }
 
+// Encontra o no com o maior valor na arvore
+// O maior fica sempre na extremidade direita
 Node *getMax(Node *node)
 {
     if (node == NULL)
@@ -103,6 +117,8 @@ Node *getMax(Node *node)
     return node;
 }
 
+// Encontra o no com o menor valor na arvore
+// O menor fica sempre na extremidade esquerda
 Node *getMin(Node *node)
 {
     if (node == NULL)
@@ -118,6 +134,8 @@ Node *getMin(Node *node)
     return node;
 }
 
+// Encontra o sucessor (proximo maior) de um no
+// Sucessor eh o menor valor da sub-arvore direita
 Node *getSucessor(Node *node)
 {
     if (node == NULL || node->right == NULL)
@@ -125,9 +143,11 @@ Node *getSucessor(Node *node)
         return NULL;
     }
 
-    return getMin(node->right); // o sucessor é o menor da sub-direita do node
+    return getMin(node->right); // o sucessor eh o menor da sub-arvore direita
 }
 
+// Encontra o antecessor (proximo menor) de um no
+// Antecessor eh o maior valor da sub-arvore esquerda
 Node *getAntecessor(Node *node)
 {
     if (node == NULL || node->left == NULL)

@@ -1,9 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include "generic_list.h"
+#include "../include/generic_list.h"
 
 // Callback para comparar dois inteiros
+// Retorna 0 se iguais, negativo se a < b, positivo se a > b
 int compare_int(void *a, void *b)
 {
     /*
@@ -15,7 +16,8 @@ int compare_int(void *a, void *b)
     return x - y;
 }
 
-// Callback para iterar e imprimir
+// Callback para iterar e imprimir inteiros
+// Retorna true para continuar iteracao, false para parar
 bool print_int(int index, void *data)
 {
     int value = *(int *)data;
@@ -54,4 +56,3 @@ int main()
 
     return 0;
 }
-

@@ -13,15 +13,8 @@ typedef struct Queue
     Node *rear;
 } Queue;
 
-void initQueue(Queue *queue)
-{
-    queue->front = queue->rear = NULL;
-}
+// 
 
-int isEmpty(Queue *queue)
-{
-    return queue->front == NULL;
-}
 void enqueue(Queue *queue, int value)
 {
     Node *newNode = (Node *)malloc(sizeof(Node));
